@@ -1,0 +1,7 @@
+{
+  "name": "carApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

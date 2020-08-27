@@ -1,0 +1,114 @@
+<ion-content [fullscreen]="true" forceOverscroll="false">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title size="large" class="title"></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid style="height:100%">
+    <ion-row>
+      <ion-col>
+        <img src="../../assets/car.png" alt="Bmw I8 Png Royalty Free Stock - Bmw Car@pngkey.com">
+      </ion-col>
+    </ion-row>
+    <ion-row style="height:25%">
+      <ion-col>
+        <div (click)="presentModalBattery()" class="card batterylayout">
+          <div class="cardtitle">Battery</div>
+          <div class="battery">
+            <div
+              [ngClass]="getCurrentBattery() < 10 ? 'battery-level alert' : (getCurrentBattery() < 25 ? ' battery-level warn' : 'battery-level')"
+              [style.height.%]="getCurrentBattery()"></div>
+          </div>
+          <div class="batterytext">
+            <div class="infos">{{getCurrentBattery()}} %</div>
+            <div class="label">Remain</div>
+            <div class="label"> &nbsp;</div>
+            <div class="infos">278 km</div>
+            <div class="label">To drive</div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="card mileagelayout">
+          <div class="cardtitle">Mileage</div>
+          <div class="totalMileage">{{getTotalMileage()}}</div>
+          <div class="cardtitle kmtext label">km</div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style="height:35%">
+      <ion-col class="tirelayout">
+        <div class="card topleft ">
+          <div class="cardtitle">Left Front</div>
+          <div class="box">
+            <div class="percent">
+              <svg>
+                <circle cx="34" cy="34" r="34"></circle>
+                <circle class="secondcircle" cx="34" cy="34" r="34" [style.stroke-dashoffset]="getTirePercentage(1)">
+                </circle>
+              </svg>
+              <div class="number">
+                <div>{{getAirPressure(1)}}<div class="label">bar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card bottomleft ">
+          <div class="cardtitle">Left Back</div>
+          <div class="box">
+            <div class="percent">
+              <svg>
+                <circle cx="34" cy="34" r="34"></circle>
+                <circle class="secondcircle" cx="34" cy="34" r="34" [style.stroke-dashoffset]="getTirePercentage(2)">
+                </circle>
+              </svg>
+              <div class="number">
+                <div>{{getAirPressure(2)}}<div class="label">bar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="tirecar" src=" ../../assets/carTop2.png" alt="Bmw I8 Png Royalty Free Stock - Bmw Car@pngkey.com">
+        <div class="card topright ">
+          <div class="cardtitle">Right Front</div>
+          <div class="box">
+            <div class="percent">
+              <svg>
+                <circle cx="34" cy="34" r="34"></circle>
+                <circle class="secondcircle" cx="34" cy="34" r="34" [style.stroke-dashoffset]="getTirePercentage(3)">
+                </circle>
+              </svg>
+              <div class="number">
+                <div>{{getAirPressure(3)}}<div class="label">bar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card bottomright ">
+          <div class="cardtitle">Right Back</div>
+          <div class="box">
+            <div class="percent">
+              <svg>
+                <circle cx="34" cy="34" r="34"></circle>
+                <circle class="secondcircle" cx="34" cy="34" r="34" [style.stroke-dashoffset]="getTirePercentage(4)">
+                </circle>
+              </svg>
+              <div class="number">
+                <div>{{getAirPressure(4)}}<div class="label">bar</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
