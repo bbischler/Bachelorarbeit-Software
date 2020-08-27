@@ -1,0 +1,9 @@
+# variables are declared in .env file
+version: '3' 
+services:
+    car:
+        build: ./tesla
+        # ports: 
+        #     - 8080 
+       
+

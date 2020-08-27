@@ -1,0 +1,5 @@
+INFLUXDB_URL: http://influxdb:8086/
+CAR_DATABASE_NAME: car
+server:
+  port: 8081
+
