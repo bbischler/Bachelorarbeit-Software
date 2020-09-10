@@ -17,7 +17,7 @@ public class TransmissionService {
 
 	private static Logger logger = LogManager.getLogger();
 	// private String url = "http://localhost:8080/cars";
-	private String url = "http://pp3-quarkus-recv-pp3.apps.us-east-2.starter.openshift-online.com/cars";
+	private String url = "http://pp3-quarkus-recv-pp3.apps.us-west-1.starter.openshift-online.com/cars";
 
 	public TransmissionService() {
 	}

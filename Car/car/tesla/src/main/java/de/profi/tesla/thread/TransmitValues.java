@@ -2,6 +2,7 @@ package de.profi.tesla.thread;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpStatus;
 
 import de.profi.tesla.MessageQueue;
 import de.profi.tesla.service.TransmissionService;
@@ -34,10 +35,10 @@ public class TransmitValues extends Thread {
 			while (queue.getQueueSize() > 0) {
 				logger.info("Values: " + queue.getFirstQueueEntry());
 					// send first entry from the queue
-					HttpStatus responseCode = transmissionService.sendCarSensorValues(messageQueue.getFirstQueueEntry());
+					HttpStatus responseCode = transmissionService.sendCarSensorValues(queue.getFirstQueueEntry());
 
 					if (responseCode.is2xxSuccessful()) {
-						messageQueue.deleteFirstQueueEntry(); // delete entry, if sending was successful
+						queue.deleteFirstQueueEntry(); // delete entry, if sending was successful
 						sendingErrorCount = 0; // reset error count
 					} else {
 						sendingErrorCount++; // increase error count
@@ -55,11 +56,10 @@ public class TransmitValues extends Thread {
 			}
 		}
 	}
+		}
 
-	/**
-	 * Stops the thread
-	 * 
-	 */
+	
+
 	public void stopTransmittingValues() {
 		logger.debug("Stop transmitting values at next iteration.");
 		threadRunning = false; // stop the tread at the next iteration
